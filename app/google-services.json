@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "1018086807431",
+    "firebase_url": "https://foodgram-4621a.firebaseio.com",
+    "project_id": "foodgram-4621a",
+    "storage_bucket": "foodgram-4621a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018086807431:android:fc4bd932bf011894",
+        "android_client_info": {
+          "package_name": "com.codersfield.foodgram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1018086807431-19i2pl88co6r6bt5bm6f46pbjmeno5q9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codersfield.foodgram",
+            "certificate_hash": "6794f14c1e08612b88824b202c6f3ab1ea565d7d"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGH2q5t7AUJR5zydEb0snVIeLpDXGWUF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018086807431-f1t6kjvlq76nkgikg2i9fpgvfqjt8j4c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
