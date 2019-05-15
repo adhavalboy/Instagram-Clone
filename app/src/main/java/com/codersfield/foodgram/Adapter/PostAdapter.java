@@ -2,7 +2,9 @@ package com.codersfield.foodgram.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codersfield.foodgram.CommentsActivity;
+import com.codersfield.foodgram.Fragment.PostDetailFragment;
+import com.codersfield.foodgram.Fragment.ProfileFragment;
 import com.codersfield.foodgram.R;
 import com.codersfield.foodgram.model.Post;
 import com.codersfield.foodgram.model.User;
@@ -60,6 +64,47 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         nrLikes(viewHolder.likes,post.getPostid());
         getComments(post.getPostid(),viewHolder.comments);
             isSaved(post.getPostid(),viewHolder.save);
+
+          viewHolder.image_profile.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
+                  editor.putString("profileid",post.getPublisher());
+                  editor.apply();
+                  ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conatainer,new ProfileFragment()).commit();
+
+              }
+          });
+        viewHolder.username.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
+                editor.putString("profileid",post.getPublisher());
+                editor.apply();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conatainer,new ProfileFragment()).commit();
+
+            }
+        });
+        viewHolder.publisher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
+                editor.putString("profileid",post.getPublisher());
+                editor.apply();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conatainer,new ProfileFragment()).commit();
+
+            }
+        });
+        viewHolder.post_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
+                editor.putString("postid",post.getPostid());
+                editor.apply();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conatainer,new PostDetailFragment()).commit();
+
+            }
+        });
         viewHolder.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

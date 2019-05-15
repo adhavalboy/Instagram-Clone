@@ -1,7 +1,9 @@
 package com.codersfield.foodgram.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.codersfield.foodgram.Fragment.PostDetailFragment;
 import com.codersfield.foodgram.R;
 import com.codersfield.foodgram.model.Post;
 
@@ -34,8 +37,18 @@ private List<Post> mPosts;
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Post post = mPosts.get(i);
+        final Post post = mPosts.get(i);
         Glide.with(context).load(post.getPostimage()).into(viewHolder.post_image);
+        viewHolder.post_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = context.getSharedPreferences("PREFS",Context.MODE_PRIVATE).edit();
+                editor.putString("postid",post.getPostid());
+                editor.apply();
+                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_conatainer,new PostDetailFragment()).commit();
+
+            }
+        });
     }
 
     @Override
